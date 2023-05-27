@@ -63,15 +63,62 @@ class arrayADT
             }
             return 0;
         }
+
+        int IteratebinarySeach(int val)
+        {
+            int low = 0, high = length - 1;
+            while (low <= high)
+            {
+                int mid = (low + high) / 2;
+                if (val == A[mid])
+                {
+                    return mid;
+                }
+                else if (val < A[mid])
+                {
+                    high = mid - 1;
+                }
+                else
+                {
+                    low = mid + 1;
+                }
+
+            }
+            return -1;
+        }
+
+        int RecurBinarySearch(int low, int high, int val)
+        {
+            /*
+                Iterative version takes less time complexity due to Recusive function being a tail recursion           
+            */
+            if (low <= high)
+            {
+                int mid = (low + high) / 2;
+                if (val == A[mid])
+                {
+                    return mid;
+                }
+                else if (val < A[mid])
+                {
+                    return RecurBinarySearch(low, mid - 1, val);
+                }
+                else
+                {
+                    return RecurBinarySearch(mid+1, high, val);
+                }
+            }
+            return -1;
+        }
 };
 
 int main(){
     int *x = new int [5];
-    for (int i =0; i < 5; i++)
+    for (int i = 0; i < 5; i++)
     {
-        x[i] = i;
+        x[i] = i + 1;
     }
     arrayADT a = {x, 5, 20};
-    a.append(10);
+    delete [] x;
     return 0;
 }
