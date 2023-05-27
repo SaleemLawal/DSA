@@ -9,6 +9,10 @@ class arrayADT
         
     public:
         arrayADT(int* a, int l, int s): A(a), length(l), size(s){}
+        int GetLength()
+        {
+            return length;
+        }
         void append(int x)
         {
             /*
@@ -110,6 +114,63 @@ class arrayADT
             }
             return -1;
         }
+
+        void ReverseArray()
+        {
+            /*
+                An array is reversed by implementing a temp variable and swapping the elements 
+            */
+            for (int i = 0, j = length - 1; i < j; i++, j--){
+                int temp = A[i];
+                A[i] = A[j];
+                A[j] = temp;
+            }
+        }
+
+        void LeftShift()
+        {
+            /*
+                shifts an array to the left [1, 2, 3, 4, 5] becomes [2, 3, 4, 5, 0]
+            */
+           for (int i = 0; i < length - 1; i++)
+           {
+                A[i] = A[i+1];
+           }
+           A[length-1] = 0;
+        }
+
+        void LeftRotate()
+        {
+            /*
+                Rotates an array to the left [1, 2, 3, 4, 5] becomes [2, 3, 4, 5, 1]
+            */
+           int firstElem = A[0];
+           LeftShift();
+           A[length-1] = firstElem;
+        }
+        
+        void RightShift()
+        {
+            /*
+                shifts an array to the right [1, 2, 3, 4, 5] becomes [0, 1, 2, 3, 4]
+            */
+          for (int i = length - 1; i >= 0; i--)
+          {
+            A[i] = A[i-1];
+          }
+          A[0] = 0;
+           
+        }
+
+        void RightRotate()
+        {
+            /*
+                Rotates an array to the Right [1, 2, 3, 4, 5] becomes [5, 1, 2, 3, 4]
+            */
+           int lastElem = A[length-1];
+           RightShift();
+           A[0] = lastElem;
+        }
 };
 
 int main(){
@@ -118,7 +179,7 @@ int main(){
     {
         x[i] = i + 1;
     }
-    arrayADT a = {x, 5, 20};
+    arrayADT a = {x, 5, 5};
     delete [] x;
     return 0;
 }
