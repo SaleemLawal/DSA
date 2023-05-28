@@ -6,7 +6,12 @@ class arrayADT
     private:
         int *A;
         int length, size;
-        
+        void Swap(int &val1, int &val2)
+        {
+            int temp = val1;
+            val1 = val2;
+            val2 = temp;
+        }
     public:
         arrayADT(int* a, int l, int s): A(a), length(l), size(s){}
         int GetLength()
@@ -118,7 +123,7 @@ class arrayADT
         void ReverseArray()
         {
             /*
-                An array is reversed by implementing a temp variable and swapping the elements 
+                An array is reversed by implementing a temp variable and Swapping the elements 
             */
             for (int i = 0, j = length - 1; i < j; i++, j--){
                 int temp = A[i];
@@ -171,14 +176,50 @@ class arrayADT
            RightShift();
            A[0] = lastElem;
         }
+
+        void negPosSort()
+        {
+            /*
+                sort the negative values to the left and positive to the right
+            */
+            int i = 0, j = length - 1;
+            while (i < j)
+            {
+                while(A[i] < 0) {i++;}
+                while(A[j] >= 0){j--;}
+                if (i < j)
+                {
+                    Swap(A[j], A[i]);
+                }
+            }
+                
+        }
+
+        bool isSorted()
+        {
+            /*
+                checks if an array is sorted
+            */
+            for(int i = 0; i < length - 1; i++)
+            {
+                if (A[i] > A[i+1])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
 };
 
 int main(){
     int *x = new int [5];
-    for (int i = 0; i < 5; i++)
-    {
-        x[i] = i + 1;
-    }
+    x[0] = -6;
+    x[1] = 2;
+    x[2] = 5;
+    x[3] = -10;
+    x[4] = -9;
+
     arrayADT a = {x, 5, 5};
     delete [] x;
     return 0;
