@@ -7,7 +7,6 @@
 ***********************************************/
 
 #include "Bar.h"
-
 // Name: Bar (Default Constructor) (not used)
 // Desc: Dynamically allocates m_data for strings (always). m_fileName defaults to test.txt
 // Preconditions: Input file has correctly formatted input
@@ -126,12 +125,12 @@ void Bar::RemoveCommon(){
             check = false;
         }
     }
-    if (userInput == "YES" or userInput == "Y" or userInput == "yes" or userInput == "y"){
-        for(vector<string>:: const_iterator it = EXCLUDE_LIST.begin(); it != EXCLUDE_LIST.end(); ++it){
-            m_data -> RemoveAt(*it);
-        }
-        cout << "All common words removed." << endl;
-    }
+    // if (userInput == "YES" or userInput == "Y" or userInput == "yes" or userInput == "y"){
+    //     for(vector<string>:: const_iterator it = EXCLUDE_LIST.begin(); it != EXCLUDE_LIST.end(); ++it){
+    //         m_data -> RemoveAt(*it);
+    //     }
+    //     cout << "All common words removed." << endl;
+    // }
 }
 // Name: RemoveSingles
 // Desc: Asks the user if they would like to remove words with a frequency of 1

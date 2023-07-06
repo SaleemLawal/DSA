@@ -1,6 +1,6 @@
 /*****************************************
 ** File:    Bar.h
-** This file contains the prototype functions that help with perfoming actions 
+** This file contains the prototype functions that help with perfoming actions
 ** from input received form a text file, acctions
 ** such as (loading the file, removing common and single words words, sorting the data and exporting it)
 **
@@ -17,16 +17,40 @@
 #include <map>
 using namespace std;
 
-//DO NOT ADD ANY ADDITIONAL CONSTANTS OR FUNCTIONS TO ANY CLASS
+// DO NOT ADD ANY ADDITIONAL CONSTANTS OR FUNCTIONS TO ANY CLASS
 
-//CONSTANTS
+// CONSTANTS
 const char barChar = '*';
 
-//Common words to be removed from output
-const vector<string> EXCLUDE_LIST{"a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can", "can't", "cannot", "com", "could", "couldn't", "did", "didn't", "do", "does", "doesn't", "doing", "don't", "down", "during", "each", "else", "ever", "few", "for", "from", "further", "get", "had", "hadn't", "has", "hasn't", "have", "haven't", "having", "he", "he'd", "he'll", "he's", "her", "here", "here's", "hers", "herself", "him", "himself", "his", "how", "how's", "http", "i", "i'd", "i'll", "i'm", "i've", "I", "I'd", "I'll", "I'm", "I've", "if", "in", "into", "is", "isn't", "it", "it's", "its", "itself", "just", "k", "let's", "like", "me", "more", "most", "mustn't", "my", "myself", "no", "nor", "not", "of", "off", "on", "once", "only", "or", "other", "ought", "our", "ours", "ourselves", "out", "over", "own", "r", "same", "shall", "shan't", "she", "she'd", "she'll", "she's", "should", "shouldn't", "so", "some", "such", "than", "that", "that's", "the", "their", "theirs", "them", "themselves", "then", "there", "there's", "these", "they", "they'd", "they'll", "they're", "they've", "this", "those", "through", "to", "too", "under", "until", "up", "very", "was", "wasn't", "we", "we'd", "we'll", "we're", "we've", "were", "weren't", "what", "what's", "when", "when's", "where", "where's", "which", "while", "who", "who's", "whom", "why", "why's", "with", "won't", "would", "wouldn't", "www", "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", "yourselves"};
+// Common words to be removed from output
 
-class Bar{
- public:
+// const vector<string> EXCLUDE_LIST{
+//     "a", "about", "above", "after", "again", "against", "all", "am", "an", "and",
+//     "any", "are", "aren't", "as", "at", "be", "because", "been", "before",
+//     "being", "below", "between", "both", "but", "by", "can", "can't", "cannot",
+//     "com", "could", "couldn't", "did", "didn't", "do", "does", "doesn't", "doing",
+//     "don't", "down", "during", "each", "else", "ever", "few", "for", "from",
+//     "further", "get", "had", "hadn't", "has", "hasn't", "have", "haven't",
+//     "having", "he", "he'd", "he'll", "he's", "her", "here", "here's", "hers",
+//     "herself", "him", "himself", "his", "how", "how's", "http", "i", "i'd",
+//     "i'll", "i'm", "i've", "I", "I'd", "I'll", "I'm", "I've", "if", "in", "into",
+//     "is", "isn't", "it", "it's", "its", "itself", "just", "k", "let's", "like",
+//     "me", "more", "most", "mustn't", "my", "myself", "no", "nor", "not", "of",
+//     "off", "on", "once", "only", "or", "other", "ought", "our", "ours",
+//     "ourselves", "out", "over", "own", "r", "same", "shall", "shan't", "she",
+//     "she'd", "she'll", "she's", "should", "shouldn't", "so", "some", "such",
+//     "than", "that", "that's", "the", "their", "theirs", "them", "themselves",
+//     "then", "there", "there's", "these", "they", "they'd", "they'll", "they're",
+//     "they've", "this", "those", "through", "to", "too", "under", "until", "up",
+//     "very", "was", "wasn't", "we", "we'd", "we'll", "we're", "we've", "were",
+//     "weren't", "what", "what's", "when", "when's", "where", "where's", "which",
+//     "while", "who", "who's", "whom", "why", "why's", "with", "won't", "would",
+//     "wouldn't", "www", "you", "you'd", "you'll", "you're", "you've", "your",
+//     "yours", "yourself", "yourselves"};
+
+class Bar
+{
+public:
   // Name: Bar (Default Constructor) (not used)
   // Desc: Dynamically allocates m_data for strings (always). m_fileName defaults to test.txt
   // Preconditions: Input file has correctly formatted input
@@ -43,7 +67,7 @@ class Bar{
   // Desc: Deallocates m_data
   // Preconditions: m_data has been dynamically allocated
   // Postconditions: m_data is empty
-  ~Bar ();
+  ~Bar();
   // Name: Start
   // Desc: Calls LoadFile, RemoveCommon, RemoveSingles, Sort, DisplayBars, and Export
   //       During testing, may want to call Display
@@ -66,7 +90,7 @@ class Bar{
   //       You can use ispunct - https://www.geeksforgeeks.org/ispunct-function-c/
   // Preconditions: Strings to be evaluated
   // Postconditions: Punctuation is removed from string
-  void RemovePunct(string&);
+  void RemovePunct(string &);
   // Name: RemoveCommon
   // Desc: Asks user if they want to remove common words
   //       If yes, iterates through m_data and removes all common words after they are read
@@ -97,9 +121,10 @@ class Bar{
   // Preconditions: m_dataSorted is populated
   // Postconditions: New export file is created and populated with a formatted bar chart
   void Export();
- private: 
-  string m_fileName; //Name of the input file
-  LL<string>* m_data; //LL to store all data
-  multimap<int, string> m_dataSorted; //multimap to sort the data based on frequency
+
+private:
+  string m_fileName;                  // Name of the input file
+  LL<string> *m_data;                 // LL to store all data
+  multimap<int, string> m_dataSorted; // multimap to sort the data based on frequency
 };
 #endif
