@@ -3,7 +3,7 @@
 ** This is the main for project 5
 **
 ***********************************************/
-#include "Bar.h"
+#include "Bar.cpp"
 #include <iostream>
 #include <string>
 #include <fstream>
